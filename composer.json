@@ -1,0 +1,10 @@
+{
+    "autoload": {
+        "classmap": [
+            "src/"
+        ]
+    },
+    "require": {
+        "mibe/feedwriter": "^1.1"
+    }
+}
