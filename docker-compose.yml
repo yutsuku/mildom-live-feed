@@ -5,6 +5,8 @@ services:
             context: .
             dockerfile: Dockerfile
         image: mildom-live-feed
+        container_name: mildom-live-feed
+        restart: unless-stopped
         ports:
             - "${APP_PORT:-80}:8000"
         volumes:
