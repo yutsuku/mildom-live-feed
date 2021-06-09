@@ -5,6 +5,7 @@
         ]
     },
     "require": {
-        "mibe/feedwriter": "^1.1"
+        "mibe/feedwriter": "^1.1",
+        "rmccue/requests": "^1.8"
     }
 }
