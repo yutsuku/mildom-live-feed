@@ -4,10 +4,36 @@ declare(strict_types=1);
 use \FeedWriter\ATOM;
 
 $id = $_GET['id'] ?? 0;
-$id = filter_var($id, FILTER_VALIDATE_INT);
+$id = filter_var($id, FILTER_VALIDATE_INT, [
+    'options' => [
+        'min_range' => 1
+    ]
+]);
 
 if (!$id) {
     http_response_code(400);
+
+    $html = <<<'EOF'
+        <form name="main" method="GET">
+        ID: <input type="text" name="id"> <input type="submit">
+        </form>
+        <div>Feed URL: <a id="url" target="_blank" href="#"></a></div>
+
+        <script>
+            let form = document.querySelector('form');
+            form.addEventListener('submit', function(event) {
+                let id = document.querySelector('form [name="id"]');
+                let anchor = document.querySelector('#url');
+                let url = window.location.origin + window.location.pathname + '?id=' + id.value;
+                anchor.setAttribute('href', url);
+                anchor.innerHTML = url;
+
+                event.preventDefault();
+            }, true);
+        </script>
+    EOF;
+
+    echo $html;
     exit();
 }
 
