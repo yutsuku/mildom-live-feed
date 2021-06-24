@@ -54,10 +54,10 @@ try {
     $item->setAuthor($dpr->author_name);
     $item->setLink($dpr->stream_url);
 
-    $content = sprintf('<img src="%s" alt="thumbnail" /><br /><br />\r\n', $dpr->stream_image);
+    $content = sprintf('<img src="%s" alt="thumbnail" /><br /><br />', $dpr->stream_image);
 
     foreach ($dpr->videos as $video) {
-        $content .= sprintf('<a href="%s">%s</a><br />\r\n', $video->url, $video->definition);
+        $content .= sprintf('<a href="%s">%s</a><br />', $video->url, $video->definition);
     }
 
     $item->setContent($content);
